@@ -829,6 +829,7 @@
         }
     })
 </script>
+@yield('scripts')
 </body>
 <!-- END: Body-->
 
