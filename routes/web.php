@@ -13,10 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/auth', function (){
+    Auth()->loginUsingId(1);
+    return 1;
+});
+
 Route::group(['prefix' => ''],function (){
-    Route::get('/', [\App\Http\Controllers\Lk\IndexController::class, 'index']);
-    Route::get('/auth', function (){
-       Auth()->loginUsingId(1);
-       return 1;
-    });
+    Route::get('/', [\App\Http\Controllers\Lk\IndexController::class, 'index'])->name('lk.index');
+    Route::get('/payments', [\App\Http\Controllers\Lk\PaymentsController::class, 'index'])->name('lk.payments');
 });

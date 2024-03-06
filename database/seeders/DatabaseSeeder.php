@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Author;
+use App\Models\Payment;
 use App\Models\Track;
 use App\Models\Type;
 use App\Models\User;
@@ -45,8 +46,15 @@ class DatabaseSeeder extends Seeder
             );
         }
 
+        $statuses = ['done', 'fail', 'wait'];
+
         foreach (Track::pluck('id')->all() as $track_id) {
+            Payment::create(['track_id' => $track_id, 'user_id' => 1, 'price' => $prices[rand(0,2)], 'status' => $statuses[rand(0,2)]]);
             DB::table('users_tracks')->insert(['user_id' => 1, 'track_id' => $track_id]);
         }
+
+//        for ($i = 0; $i < 100; $i++){
+//            Payment::create(['track_id' => 1, 'user_id' => 1, 'price' => $prices[rand(0,2)], 'status' => $statuses[rand(0,2)]]);
+//        }
     }
 }
