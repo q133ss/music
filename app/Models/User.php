@@ -42,4 +42,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function getMyBeats()
+    {
+        return $this->belongsToMany(Track::class, 'users_tracks', 'user_id', 'track_id')
+            ->orderBy('users_tracks.created_at', 'desc');
+    }
 }

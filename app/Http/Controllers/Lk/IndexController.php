@@ -9,6 +9,7 @@ class IndexController extends Controller
 {
     public function index()
     {
-        return view('lk.index');
+        $beats = Auth()->user()->getMyBeats->load('author');
+        return view('lk.index', compact('beats'));
     }
 }

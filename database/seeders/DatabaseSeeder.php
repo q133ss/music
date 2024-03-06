@@ -3,7 +3,13 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Author;
+use App\Models\Track;
+use App\Models\Type;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,11 +18,35 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        User::create([
+            'name' => 'admin',
+            'email' => 'admin@email.net',
+            'password' => Hash::make('password')
+        ]);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+
+        Author::create(['name' => 'Автор1']);
+        Author::create(['name' => 'Автор2']);
+        Author::create(['name' => 'Автор3']);
+
+        Type::create(['name' => 'Караоке']);
+        Type::create(['name' => 'Не караоке']);
+
+        $prices = [1999, 2499, 3900];
+
+        for($i = 1; $i <= 5; $i++){
+            Track::create(
+                [
+                    'author_id' => rand(1,3),
+                    'type_id' => rand(1,2),
+                    'name' => 'Бит'.$i,
+                    'price' => $prices[rand(0,2)]
+                ]
+            );
+        }
+
+        foreach (Track::pluck('id')->all() as $track_id) {
+            DB::table('users_tracks')->insert(['user_id' => 1, 'track_id' => $track_id]);
+        }
     }
 }

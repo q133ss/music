@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tracks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('singer_id');
+            $table->foreignId('author_id');
             $table->foreignId('type_id');
             $table->string('name');
             $table->double('price');

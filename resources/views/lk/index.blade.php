@@ -4,6 +4,7 @@
     <style>
         .my_beats{
             display: grid;
+            grid-row-gap: 20px;
         }
 
         .beat_wrap{
@@ -33,6 +34,7 @@
 @endsection
 @section('content')
     <div class="my_beats">
+        @foreach($beats as $beat)
         <div class="beat_wrap">
             <audio id="player5" src="/mp3.mp3" preload="none" type="audio/mp3" class="hide"></audio>
 
@@ -43,12 +45,13 @@
             </div>
 
             <div class="beat_play">
-                <div class="beat_name">Tunegym – Blonde</div>
+                <div class="beat_name">{{$beat->author->name}} – {{$beat->name}}</div>
                 <div class="progress"></div>
             </div>
 
             <a href="#" class="btn btn-primary">Скачать</a>
         </div>
+        @endforeach
     </div>
 @endsection
 @section('scripts')
