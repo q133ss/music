@@ -24,7 +24,7 @@
         }
 
         .beat_play{
-            width: 100%;
+            width: 80%;
         }
 
         .hide{
@@ -33,6 +33,12 @@
     </style>
 @endsection
 @section('content')
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Моя музыка</h5>
+        </div>
+        <div class="card-body">
+
     <div class="my_beats">
         @foreach($beats as $beat)
         <div class="beat_wrap">
@@ -52,6 +58,9 @@
             <a href="#" class="btn btn-primary">Скачать</a>
         </div>
         @endforeach
+    </div>
+
+        </div>
     </div>
 @endsection
 @section('scripts')
