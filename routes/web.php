@@ -18,10 +18,17 @@ Route::get('/auth', function (){
     return 1;
 });
 
-Route::get('/login', [\App\Http\Controllers\Auth\LoginController::class, 'index'])->name('login');
-Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'login']);
-Route::get('/register', [\App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('register');
-Route::post('/register', [\App\Http\Controllers\Auth\RegisterController::class, 'register']);
+Route::middleware('guest')->group(function (){
+    Route::get('/login', [\App\Http\Controllers\Auth\LoginController::class, 'index'])->name('login');
+    Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'login']);
+    Route::get('/register', [\App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('register');
+    Route::post('/register', [\App\Http\Controllers\Auth\RegisterController::class, 'register']);
+    Route::get('/forgot', [\App\Http\Controllers\Auth\ForgotController::class, 'index'])->name('forgot.password');
+    Route::post('/forgot', [\App\Http\Controllers\Auth\ForgotController::class, 'forgot']);
+    Route::get('/password/reset/{token}', [\App\Http\Controllers\Auth\ResetController::class, 'index'])->name('reset.password');
+    Route::post('/password/reset/{token}', [\App\Http\Controllers\Auth\ResetController::class, 'reset']);
+});
+
 Route::get('/logout', [\App\Http\Controllers\Auth\LogoutController::class, 'logout'])->name('logout');
 
 Route::view('/policy', 'policy')->name('policy');

@@ -6,10 +6,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
-    <meta name="description" content="Вход в личный кабинет">
+    <meta name="description" content="Восстановить пароль">
     <meta name="keywords" content="">
     <meta name="author" content="Alexey">
-    <title>Вход</title>
+    <title>Восстановить пароль</title>
     <link rel="apple-touch-icon" href="/lk/app-assets/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="/lk/app-assets/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
@@ -83,7 +83,7 @@
                                 <h2 class="brand-text text-primary ms-1">Beats</h2>
                             </a>
 
-                            <h4 class="card-title mb-1 text-center">Добро пожаловать! 👋</h4>
+                            <h4 class="card-title mb-1 text-center">Восстановление пароля</h4>
 
                             @if(session()->has('success'))
                                 <div class="alert alert-success">
@@ -100,59 +100,15 @@
                                 </div>
                             @endif
 
-                            <form class="auth-login-form mt-2" action="{{route('login')}}" method="POST">
+                            <form class="auth-login-form mt-2" action="{{route('forgot.password')}}" method="POST">
                                 @csrf
                                 <div class="mb-1">
                                     <label for="login-email" class="form-label">Email</label>
                                     <input type="text" class="form-control" id="login-email" name="email" value="{{old('email')}}" placeholder="email@mail.net" aria-describedby="login-email" tabindex="1" autofocus />
                                 </div>
 
-                                <div class="mb-1">
-                                    <div class="d-flex justify-content-between">
-                                        <label class="form-label" for="login-password">Пароль</label>
-                                        <a href="{{route('forgot.password')}}">
-                                            <small>Забыли пароль?</small>
-                                        </a>
-                                    </div>
-                                    <div class="input-group input-group-merge form-password-toggle">
-                                        <input type="password" class="form-control form-control-merge" id="login-password" name="password" tabindex="2" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="login-password" />
-                                        <span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
-                                    </div>
-                                </div>
-                                <div class="mb-1">
-                                    <div class="form-check">
-                                        <input class="form-check-input" name="remember" type="checkbox" id="remember-me" tabindex="3" />
-                                        <label class="form-check-label" for="remember-me"> Запомнить меня </label>
-                                    </div>
-                                </div>
-                                <button class="btn btn-primary w-100" tabindex="4">Войти</button>
+                                <button class="btn btn-primary w-100" tabindex="4">Далее</button>
                             </form>
-
-                            <p class="text-center mt-2">
-                                <span>Впервые у нас?</span>
-                                <a href="{{route('register')}}">
-                                    <span>Создать аккаунт</span>
-                                </a>
-                            </p>
-
-{{--                            <div class="divider my-2">--}}
-{{--                                <div class="divider-text">or</div>--}}
-{{--                            </div>--}}
-
-{{--                            <div class="auth-footer-btn d-flex justify-content-center">--}}
-{{--                                <a href="#" class="btn btn-facebook">--}}
-{{--                                    <i data-feather="facebook"></i>--}}
-{{--                                </a>--}}
-{{--                                <a href="#" class="btn btn-twitter white">--}}
-{{--                                    <i data-feather="twitter"></i>--}}
-{{--                                </a>--}}
-{{--                                <a href="#" class="btn btn-google">--}}
-{{--                                    <i data-feather="mail"></i>--}}
-{{--                                </a>--}}
-{{--                                <a href="#" class="btn btn-github">--}}
-{{--                                    <i data-feather="github"></i>--}}
-{{--                                </a>--}}
-{{--                            </div>--}}
                         </div>
                     </div>
                     <!-- /Login basic -->
