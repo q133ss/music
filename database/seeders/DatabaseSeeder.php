@@ -22,7 +22,8 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'admin',
             'email' => 'admin@email.net',
-            'password' => Hash::make('password')
+            'password' => Hash::make('password'),
+            'is_admin' => 1
         ]);
 
 
@@ -53,8 +54,8 @@ class DatabaseSeeder extends Seeder
             DB::table('users_tracks')->insert(['user_id' => 1, 'track_id' => $track_id]);
         }
 
-//        for ($i = 0; $i < 100; $i++){
-//            Payment::create(['track_id' => 1, 'user_id' => 1, 'price' => $prices[rand(0,2)], 'status' => $statuses[rand(0,2)]]);
-//        }
+        for ($i = 0; $i < 100; $i++){
+            Payment::create(['track_id' => 1, 'user_id' => 1, 'price' => $prices[rand(0,2)], 'status' => $statuses[rand(0,2)]]);
+        }
     }
 }

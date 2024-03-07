@@ -41,3 +41,11 @@ Route::group(['prefix' => '', 'middleware' => 'auth'],function (){
     Route::get('/feedback', [\App\Http\Controllers\Lk\FeedbackController::class, 'index'])->name('lk.feedback');
     Route::post('/feedback', [\App\Http\Controllers\Lk\FeedbackController::class, 'store'])->name('lk.feedback.store');
 });
+
+Route::group(['prefix' => 'admin/', 'as' => 'admin.', 'middleware' => ['auth','is.admin']], function (){
+    Route::get('index', function (){
+        return 222;
+    })->name('index');
+
+    // Управление разделами + музыкой + юзерами Нужно сперва посмотреть верстку
+});
